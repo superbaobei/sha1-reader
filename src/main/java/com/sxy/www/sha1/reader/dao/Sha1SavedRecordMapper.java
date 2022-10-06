@@ -1,9 +1,6 @@
-package com.sxy.www.sha1.reader.dao
+package com.sxy.www.sha1.reader.dao;
 
-.115.dao;
-
-import com.sxy.www
-import com.sxy.www.sha1.reader.model.Sha1SavedRecord;.115.model.Sha1SavedRecord;
+import com.sxy.www.sha1.reader.model.Sha1SavedRecord;
 
 public interface Sha1SavedRecordMapper {
     int deleteByPrimaryKey(Integer id);

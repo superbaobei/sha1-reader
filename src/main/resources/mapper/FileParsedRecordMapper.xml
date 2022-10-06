@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxy.www.sha1.reader.dao.FileParsedRecordMapper">
+  <resultMap id="BaseResultMap" type="com.sxy.www.sha1.reader.model.FileParsedRecord">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="parent_file" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="file_digest" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, parent_file, file_digest
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from file_parsed_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectByFileDigest" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List"/> from file_parsed_record where file_digest =#{digest}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from file_parsed_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sxy.www.sha1.reader.model.FileParsedRecord">
+    insert into file_parsed_record (id, parent_file, file_digest
+      )
+    values (#{id,jdbcType=INTEGER}, #{parentFile,jdbcType=VARCHAR}, #{fileDigest,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sxy.www.sha1.reader.model.FileParsedRecord">
+    insert into file_parsed_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="parentFile != null">
+        parent_file,
+      </if>
+      <if test="fileDigest != null">
+        file_digest,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="parentFile != null">
+        #{parentFile,jdbcType=VARCHAR},
+      </if>
+      <if test="fileDigest != null">
+        #{fileDigest,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxy.www.sha1.reader.model.FileParsedRecord">
+    update file_parsed_record
+    <set>
+      <if test="parentFile != null">
+        parent_file = #{parentFile,jdbcType=VARCHAR},
+      </if>
+      <if test="fileDigest != null">
+        file_digest = #{fileDigest,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sxy.www.sha1.reader.model.FileParsedRecord">
+    update file_parsed_record
+    set parent_file = #{parentFile,jdbcType=VARCHAR},
+      file_digest = #{fileDigest,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

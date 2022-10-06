@@ -1,9 +1,6 @@
-package com.sxy.www.sha1.reader.dao
+package com.sxy.www.sha1.reader.dao;
 
-.115.dao;
-
-import com.sxy.www
-import com.sxy.www.sha1.reader.model.FileParsedRecord;.115.model.FileParsedRecord;
+import com.sxy.www.sha1.reader.model.FileParsedRecord;
 
 public interface FileParsedRecordMapper {
     int deleteByPrimaryKey(Integer id);
@@ -17,4 +14,6 @@ public interface FileParsedRecordMapper {
     int updateByPrimaryKeySelective(FileParsedRecord record);
 
     int updateByPrimaryKey(FileParsedRecord record);
+    FileParsedRecord selectByFileDigest(String digest);
+
 }

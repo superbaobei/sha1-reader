@@ -1,4 +1,4 @@
-package com.sxy.www.sha1.reader.model.115.model;
+package com.sxy.www.sha1.reader.model;
 
 public class FileParsedRecord {
     private Integer id;
