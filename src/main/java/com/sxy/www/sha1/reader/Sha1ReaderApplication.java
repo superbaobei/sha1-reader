@@ -1,4 +1,4 @@
-package com.example.sha1reader;
+package com.sxy.www.sha1.reader;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.example.sha1reader;
+package com.sxy.www.sha1.reader;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.DigestUtils;
